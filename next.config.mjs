@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
+  distDir: "docs",
+  basePath: "/workshop-series-website",
+  assetPrefix: "/workshop-series-website/",
   images: {
     remotePatterns: [
       {
@@ -7,6 +11,7 @@ const nextConfig = {
         hostname: "**",
       },
     ],
+    unoptimized: true,
   },
 };
 

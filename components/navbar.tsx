@@ -10,7 +10,7 @@ import { BasePath } from "./global_constants";
 export const NAVLINKS = [
   {
     title: "Content",
-    href: `/${BasePath.CONTENT}${page_routes[0].href}`,
+    href: `/${BasePath.CONTENT}${page_routes[2].href}`,
   },
   {
     title: "Schedule",

@@ -11,9 +11,7 @@ type PageProps = {
   params: { slug: string[] };
 };
 
-export default async function AboutPage({
-  params: { slug = [] },
-}: PageProps) {
+export default async function AboutPage({ params: { slug = [] } }: PageProps) {
   const pathName = slug.join("/");
   const res = await getContentsForSlug(`${BasePath.ABOUT}/${pathName}`);
 
@@ -52,7 +50,12 @@ export async function generateMetadata({ params: { slug = [] } }: PageProps) {
 }
 
 export function generateStaticParams() {
-  return page_routes.map((item) => ({
-    slug: item.href.split("/").slice(1),
-  }));
+  const baseRoute = { slug: [] };
+  const contentRoutes = page_routes
+    .filter((route) => route.basePath === "about")
+    .map((route) => ({
+      slug: route.href.split("/").filter(Boolean),
+    }));
+
+  return [baseRoute, ...contentRoutes];
 }
