@@ -2,8 +2,6 @@
 const nextConfig = {
   output: "export",
   distDir: "docs",
-  basePath: "/workshop-series-website",
-  assetPrefix: "/workshop-series-website/",
   images: {
     remotePatterns: [
       {

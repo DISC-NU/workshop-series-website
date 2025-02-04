@@ -49,20 +49,17 @@ export async function generateMetadata({ params: { slug = [] } }: PageProps) {
 }
 
 export function generateStaticParams() {
-  // Base content paths
   const basePaths = [
-    { slug: [] }, // /content/
+    { slug: [] },
     { slug: ["getting-started"] },
     { slug: ["workshops"] },
     { slug: ["assignments"] },
   ];
 
-  // Workshop paths
   const workshopPaths = Array.from({ length: 9 }, (_, i) => ({
     slug: ["workshops", `workshop-${i + 1}`],
   }));
 
-  // Assignment paths
   const assignmentPaths = [
     { slug: ["assignments", "project-overview"] },
     ...Array.from({ length: 9 }, (_, i) => ({
@@ -70,7 +67,6 @@ export function generateStaticParams() {
     })),
   ];
 
-  // Getting Started paths
   const gettingStartedPaths = [
     { slug: ["getting-started", "introduction"] },
     { slug: ["getting-started", "faq"] },
