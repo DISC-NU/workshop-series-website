@@ -1,98 +1,175 @@
 ---
-title: Assignment 4 - Build a Basic React App
+title: Assignment 4 - Routing and API calls
 ---
 
-*First, read the [Project Overview](/content/assignments/project-overview) if you haven't already.*
+_First, complete [assignment 4](/content/assignments/assignment-4) if you haven't already.
+That assignment is prerequisite;
+it would be a poor use of time to learn about routing
+and API calls if you aren't already familiar with React._
 
-In workshop 4, we learned the fundamentals of building interactive websites using JavaScript and React, and we created an interactive todo list app using React. In assigment 4, you will build part of your own web app using React and JSX.
+In workshop 4, we covered client-side routing and added new routes to an ecommerce app
+using `react-router-dom`. Then, we learned about how the JavaScript engine handles
+asynchronous functions, and we used `fetch` to make requests to a products API.
 
-## Setup:
+In assignment 4, you’ll add routing and API calls to your web app.
 
-0. Install [node.js](https://nodejs.org/en) if you don't have it already.
-    - To check if you have node installed, run `npm --version` in your terminal. You should see an output like `10.8.2` (it doesn't have to be this exact number, but something similar).
-1. In your terminal, navigate to some folder where you want the project to live inside. Run the following:
-    - `npx create-react-app my-app` // creates a new directory inside your current directory called my-app. Inside this folder is a brand new react project.
-    - `cd my-app` // move into the folder of your project
-    - `npm start`  // runs the starter code and opens the app in the browser
-2. Immediately, before making any changes to the existing code, push your repo to a public github repository.
-    - Use Ctrl + C to stop running your code and close out of the node.js terminal.
-    - On github, make a new ***public*** repository
-    - In your terminal, run the commands listed under the “push an existing repository from the command line” section. 
-    - When you refresh the repo page on github, you should now see your starter code there.
-3. Set up a new branch where you will store all your work for this assignment. 
-    - Run `git checkout -b hw-4` to create and switch to a new branch. 
-    - **All of the work you do for this assignment MUST be done on this branch. You should NOT modify the main branch.**
-    - Run  `git push -u origin hw-4` to publish this new branch on github.
-4. Open the “my-app” folder in VSCode. For this assignment, you are going to edit the following files:
-    - `src/App.js` // this is where all the JSX code for your app will be stored. 
-    - `src/App.css` // this is where all the CSS styling for your app will be stored.
-    - Don’t edit any other existing files unless you know what you are doing. If you want to add new files for whatever reason, that’s fine.
-5. Go back to your terminal, or open a new terminal window. This terminal window will be dedicated to running your code with npm. 
-    - To run your code, run `npm start` in this terminal. While the code is running, you will not be able to run terminal commands (including git commands) inside this terminal window. We will dedicate a different terminal window to running terminal commands in step 6.
-    - Running npm start should open your app in your browser. Whenever you save changes to App.js or App.css, the changes should be immediately reflected in your browser. Make a small change to App.js and save the file. Double check that your changes are reflected in the browser.
-    - If you want to stop running your code at any time, use Ctrl+C inside this terminal.
-6. Open another terminal window and navigate to your “my-app” project folder. Use this terminal window to make commits and push them to github. 
-    - Run `git branch` to see what branch you’re working on. **Ensure you are working on the hw-4 branch, NOT the main branch.** Use `git checkout insert-branch-name` to switch to a different branch.
-    - Run `git add . && git commit -m “my first commit”` to create a new commit with your small change to App.js. 
-    - Run `git push` to push your commit to github. Check your github page to make sure this commit was pushed onto the hw-4 branch, NOT the main branch.
+## Setup
+
+1. You’ll begin with your web app from assignment 4.
+   We will build off of that repository this week.
+
+2. Navigate to your local project repository from assignment 4.
+   Make sure you are on the `hw-4` branch
+   (or whatever branch contains all your changes from assignment 4). 
+   - Run `git branch` to check what branch you are on. 
+   - Run `git checkout branch-name` to switch to a different branch.
+
+3. Run `git checkout -b hw-4` to create a new branch called “hw-4” that
+   branches off your hw-4 branch.
+   **All of the work on your project MUST be done on this branch.
+   You should NOT modify the main branch, or the hw-4 branch.**
+
+4. Run `git push -u origin hw-4` to publish this new branch on github.
+
+5. Dedicate one terminal window to running your code with npm.
+
+   - Run `npm start` in this terminal to run your app and view your changes in the browser.
+   - If you want to stop running your code at any time, use Ctrl+C inside this terminal.
+
+6. Dedicate another terminal window to running normal terminal commands, like git commands.
+
+   - `git add .` stages all of your current changes so you can commit them
+   - `git status` displays your changes, showing what’s staged and what isn’t
+   - `git commit -m “commit message here”` bundles everything on the stage into a commit
+   - `git push` publishes your commit(s) to github
+
 7. Now you are ready! Go forth and code!
-    - As you progress on this assignment, continue grouping your changes into commits and pushing them to the hw-4 branch on github. All of your commits MUST be on the hw-4 branch, not the main branch.
+   - As you progress on this assignment, continue grouping your changes into commits and
+     pushing them to the hw-4 branch on github.
+     All of your commits MUST be on the hw-4 branch, not the main branch or the hw-4 branch.
 
-## Core requirements:
-- Build 1 page of your web app in React by modifying `src/App.js` and `src/App.css`.
-  - We recommend building whatever page you built for [assignment 2](/content/assignments/assignment-2). Feel free to use your jsfiddle code as a reference for this assignment, but do not simply copy-paste your code and call it a day. It will be obvious if you do not make a genuine effort to complete this assignment.
-  - If you have not done any previous assignments, start with the [project overview](/content/assignments/project-overview). Brainstorm a web app idea and make a basic design of it using pen & paper (or any other method, so long as you have a design you can reference). Pick one of its pages to build for this assignment. 
-  - We recommend building whatever page includes a display of multiple profiles.
-- Your app must have the following components:
-  - An `App` component (this is provided already in the starter code in `src/App.js`).
-  - A `NavBar` component. For the navbar.
-  - At least 1 additional component.
-- Your code includes at least 1 call to `useState()`.
-  - This means you must implement an interactive feature that requires keeping track of state.
-  - Some examples include: clicking on a profile saves it to some list or makes it look different, dark mode toggle, login/logout button.
-- Your code includes at least 1 call to `useEffect()`.
-  - This can be trivial. For example, you can just use useEffect to console log the value of a state variable whenever it changes.
-- Both `src/App.js` and `src/App.css` must be modified.
+## Core requirements
+
+- Add 1 new page to your web app using `react-router-dom`.
+  - This [W3 schools tutorial](https://www.w3schools.com/react/react_router.asp) is great.
+- Retrieve and display information from the users API.
+  Use the `getAllUsers` function to get an array of all the users from the database.
+  Once you have this array, you can map over it to display a card for each user.
+  - Hint 1: store the array of users in a state variable
+  - Hint 2: you only want to fetch the users the first time you load the page,
+    instead of every time your app renders. `useEffect` can help us out here.
+
+## The users API
+
+- An API is just a group of functions. The users API is a group of functions
+  we’ve built that enable you to interact with a real database of users.
+  - You’ll be building your own database and API in a couple weeks!
+- Here are the functions we provide in this API:
+  - `getAllUsers`: gives an array of all the users in the database
+  - `getUserByID`: gives information about a specific user in the database
+  - `createUser`: adds a new user to the database
+  - `updateUser`: updates an existing user in the database
+  - `deleteUser`: deletes a user from the database
+- A machine in Ohio is set up with the code to execute these functions.
+  This machine is called a server because its job is to serve information and provide other services
+  (such as modifying a database). In order to run functions of the users API,
+  you’ll need to communicate with this server.
+  - The scheme that the server uses to communicate is ` https`.
+    This means that you will communicate with this server by making HTTP requests.
+  - The domain/hostname of the server is: ` disc-assignment-5-users-api.onrender.com`
+- Below is the information you’ll need to build your requests
+
+| Function    | Method | Path           | Additional request information                                                                                                                                                                                                                        | Response                                                                                                                                                                                                                                                                                                                                                  |
+| ----------- | ------ | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| getAllUsers | GET    | /api/users     | none                                                                                                                                                                                                                                                  | An array of `User` objects. <br/> Each `User` object has the following fields: <br/><ul><li>`id`: integer</li><li>`firstName`: string</li><li>`lastName`: string</li><li>`email`: string</li><li>`bio`: string</li><li>`major`: string</li><li>`graduationYear`: string</li><li>`profilePicture`: string</li><li>`created_at`: timestamp string</li></ul> |
+| getUserByID | GET    | /api/users/:id | none                                                                                                                                                                                                                                                  | A single `User` object                                                                                                                                                                                                                                                                                                                                    |
+| createUser  | POST   | /api/users     | The body of the request must contain these fields: <br/><ul><li>`firstName`: string</li><li>`lastName`: string</li><li>`email`: string</li><li>`bio`: string</li><li>`major`: string</li><li>`graduationYear`: string</li><li>`image`: File</li></ul> | A single `User` object representing the user you just created                                                                                                                                                                                                                                                                                             |
+| updateUser  | PUT    | /api/users/:id | The body of the request must contain these fields: <br/><ul><li>`firstName`: string</li><li>`lastName`: string</li><li>`email`: string</li><li>`bio`: string</li><li>`major`: string</li><li>`graduationYear`: string</li><li>`image`: File</li></ul> | A single `User` object representing the user you just updated                                                                                                                                                                                                                                                                                             |
+| deleteUser  | DELETE | /api/users/:id | none                                                                                                                                                                                                                                                  | none                                                                                                                                                                                                                                                                                                                                                      |
+|             |        |                |                                                                                                                                                                                                                                                       |                                                                                                                                                                                                                                                                                                                                                           |
+
+- For example, say I wanted to delete the user named “Bob”.
+  - First, I make a `GET` request to “https://disc-assignment-5-users-api.onrender.com/api/users”
+    to get information about all the users. Take note of how I constructed this URL
+    using the scheme + domain + path.
+  - Then, I search through the array of users to find the id corresponding to the user named “Bob”.
+    Let’s say Bob has id 28.
+  - Finally, I make a `DELETE` request to
+    “https://disc-assignment-5-users-api.onrender.com/api/users/28” to delete the user with id 28.
+- Use the [fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+  to make requests to the server in your JavaScript code.
+  - For `createUser`, and `updateUser`, the Content-Type you need to use for your
+    request body is `multipart/form-data`. If you are unfamiliar with how to
+    work with this type of content, read
+    [this guide](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_forms_through_JavaScript#Using_XMLHttpRequest_and_the_FormData_object)
+  - Remember that fetch returns a promise. How do we deal with promises?
+- **Important note**: the server will go to sleep if it hasn’t received any requests in a long time.
+  If that happens, the next time it receives a request, it will take a long time to
+  complete the request because it has to un-sleep. This means that some requests might
+  take up to 5 minutes to complete.
+  - To wake the server, you can make a `GET` request to it by
+    opening this URL in your browser: https://disc-assignment-5-users-api.onrender.com/api/users.
+    That’s right, every time you go to a link in your browser, it’s really just making
+    a `HTTP GET` request to that url and displaying the result.
+- *Having trouble? Check out Ethan's 
+[user API demo](https://www.loom.com/share/87b05404e35e42e5b48758ea7956d9b5).*
 
 ## Additional requirements:
-- State is the bread and butter of react. If you want to get good at React, we highly recommend focusing on getting better at useState.
-  - Make more interactive features using more states
-  - Use an array or object state
-- Make the app look *exactly* like your figma
-- Modify the `README.md` file to add a great description of your app
+
+- Add more pages to your web app.
+- Use the other functions in the users API to add more features to your web app.
+  We recommend integrating the functions in this order:
+  - `getAllUsers`
+  - `getUserByID` – should be very easy after you have `getAllUsers` working
+  - `createUser`
+  - `updateUser` – should be very easy after you have `createUser` working
+  - `deleteUser` – should be very easy after you have `getUserByID` working
+    - Each time after you delete a user, create a new user.
+      Deleting users deletes them for everyone else working on this assignment,
+      and we don’t want to be left with 0 users. This means
+      **do not implement `deleteUser` until you have `createUser` working**.
+- Add a loading screen or animation that shows up while the requests load.
 
 ## Tips
-- Prioritize functionality over prettiness. If you’re pressed for time, spend it on getting your interactive features & states working instead of on making it look nice.
-- Use `console.log` all the time to debug
-  - You can print out objects like this: `console.log(“my object:”, myObject)` where `myObject` is a variable that stores my object.
-- Use useEffect to console log states when they get updated
+
+- Read this page very carefully.
+- Use `console.log` everywhere all the time to see what all your
+  variables look like. This is especially helpful when working with complex objects,
+  such as fetch response objects.
+- The first route you add, and the first API you call, will always be the hardest.
+  Once you figure it out once, it will be much easier to do it again!
+- In almost all cases, you should be using the response from an API call to set some state variable.
+- If you keep your code organized, this assignment will be easier. We love helper functions.
+- There is a small chance that the users API doesn't work due to an issue in our implementation.
+  If you suspect that is the case, reach out to Ethan Pineda on discord.
 
 ## Resources
-- The workshop slides and recording, which you can find [here](/content/workshops/workshop-4)
-- The [react app](https://github.com/DISC-NU/workshop-4-activites) we created during workshop 4
-- **Google**. React is so popular and commonly used, I guarantee you that someone else has run into the same problem you did.
+
+- The workshop 4 slides and recordings, which you can find [here](/content/workshops/workshop-4).
+  - We have re-recorded the presentation section about concurrency & asynchronous 
+  functions to improve our explanations of those concepts.
+- The workshop 3 slides and recording, which you can find [here](/content/workshops/workshop-3).
+  The useEffect section may be particularly useful.
+- Routing with `react-router-dom`
+  - [Lightweight tutorial by W3Schools](https://www.w3schools.com/react/react_router.asp)
+  - [How to use route parameters](https://reactrouter.com/en/main/hooks/use-params).
+    This is the `/:id` stuff you see in some routes.
+  - [More in-depth tutorial](https://blog.logrocket.com/react-router-dom-tutorial-examples/)
+  - [Deeper dive into it's implementation](https://reactrouter.com/en/main/start/concepts)
+- Making API requests
+  - [Demo of the Users Api](https://www.loom.com/share/87b05404e35e42e5b48758ea7956d9b5)
+  - [How HTTP requests and responses work](https://www.realisable.co.uk/support/documentation/iman-user-guide/DataConcepts/WebRequestAnatomy.htm)
+  - [Fetch API guide](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+  - [multipart/form-data guide](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_forms_through_JavaScript#Using_XMLHttpRequest_and_the_FormData_object)
+  - An [example](https://github.com/DISC-NU/workshop-5-frontend/blob/main/src/pages/ProductForm.tsx) 
+  of making multipart/form-data requests using the `FormData` object. 
+    - This example uses the products API from workshop 5, so your code will look a little 
+    different. But for the most part, it should look very similar.
+- Google
 - StackOverflow
 - Quora
-- ChatGPT
-- [The React documentation](https://legacy.reactjs.org/docs/getting-started.html)
-  - [Tic-tac-toe tutorial](https://react.dev/learn/tutorial-tic-tac-toe)
-- [W3Schools React guides](https://www.w3schools.com/react/)
-- [Quick, React!](https://courses.cs.northwestern.edu/394/guides/quick-react.php) Guide to react created by a NU prof
-- There are SO many tutorials on youtube
-- If you want to go deeper:
-  - [Deep dive: react under the hood](https://youtu.be/za2FZ8QCE18?si=3ZSTduCM1BMZtEEC)
-  - [How rendering works in react](https://www.telerik.com/blogs/understand-how-rendering-works-react#:~:text=Rendering%20is%20React's%20process%20of,the%20UI%20need%20an%20update.)
-  - [How rendering works: virtual DOM and DOM update process](https://medium.com/@itsanuragjoshi/mastering-react-understanding-real-dom-vs-virtual-dom-and-the-dom-update-process-78a233454ff8#:~:text=Understanding%20the%20Real%20DOM%2C%20Virtual,changes%20to%20the%20actual%20DOM.)
-  - [Overview on batch state updates](https://www.linkedin.com/pulse/exploring-batching-react-18-optimizing-ui-updates-shudhanshu-raj#:~:text=Batching%2C%20introduced%20in%20React%2018,to%20perform%20the%20re%2Drender.)
-  - [Overview of JSX](https://react.dev/learn/writing-markup-with-jsx)
-  - [More on react props](https://builtin.com/articles/react-props)
-  - [react class components](https://www.w3schools.com/react/react_class.asp)
-  - useState hook
-    - [how react actually handles useState](https://youtu.be/RAJD4KpX8LA?si=TbvxigEUNodEMDTo)
-    - [Deep dive: react array states](https://www.dhiwise.com/post/react-append-to-state-array-understanding-immutability)
-    - [Guide on react object states, removing a key](https://react.dev/learn/updating-objects-in-state)
-    - [Array and object states cheat sheet](https://dev.to/andyrewlee/cheat-sheet-for-updating-objects-and-arrays-in-react-state-48np)
-  - [useEffect hook deep dive](https://daveceddia.com/useeffect-hook-examples/)
+- ChatGPT. Know that it will be obvious if you just use AI to complete
+the entire assignment and put in little effort.
 
 ## Submission
 
@@ -100,10 +177,12 @@ In workshop 4, we learned the fundamentals of building interactive websites usin
 Follow these instructions if you are submitting to get feedback from DISC exec.
 The deadline for your submission is 1 week after the associated workshop.
 
-1. Make sure all your changes are committed and pushed onto github (the hw-4 branch, NOT the main branch).
-2. On github, make a pull request from your hw-4 branch. **Do NOT merge the pull request into main**.
+1. Make sure all your changes are committed and pushed onto github
+   (the hw-4 branch, NOT the main branch or `hw-4` branch).
+2. On github, make a pull request from your `hw-4` branch.
+   **Do NOT merge the pull request**.
 3. Once you've created the pull request, copy its URL from the browser.
-4. Fill out [this google form](https://forms.gle/NBCkZQSBVscYbSFe7)
+4. Fill out [this google form](https://forms.gle/EiiqQGoRG994SKHN9)
 
 ### For the Discover Program Application
 If you are not submitting for DISC exec feedback, but for your Discover Program Application,

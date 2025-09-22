@@ -1,89 +1,65 @@
 ---
-title: Assignment 7 - Building a PostgreSQL-Integrated API
+title: Assignment 7 - Advanced API Development with Supabase
 ---
 
-In this assignment, you’ll be creating a user database in PostgreSQL, 
-developing a basic API with Node and Express to interact with this database, 
-and integrating it with a frontend application. 
-The focus will be on implementing and connecting a RESTful API to manage user data effectively.
+Building on the work you did in Assignment 6, this assignment focuses on improving your API by introducing a new table, creating joined endpoints using Supabase, and integrating Supabase's ORM and authentication into your project.
 
-## Core requirements
+## Core Requirements
 
-### 1. Database Setup
+### 1. Database Setup with Supabase
 
-- Set up a PostgreSQL database with one table named `users`.
-This table should have the following **schema**:
-  - `id`: Primary key that uniquely identifies each user. Use the `SERIAL` or `UUID` datatype.
-  - `first_name`: String, stores the first name of the user.
-  - `last_name`: String, stores the last name of the user.
-  - `email`: String, stores the user’s email address (make this unique if possible).
+- Set up a Supabase project and connect it to your PostgreSQL database.
+- Add a new table to your database. For example:
+  - Table Name: `user_profiles`
+  - Schema (add more fields if you want to):
+    - `id`: Foreign key (linked to the `id` column in the `users` table).
+    - `date_of_birth`: Date, stores the user's date of birth.
+    - `bio`: String, stores a short biography of the user.
 
-### 2. API Development
+- Create a one-to-one relationship between the `users` table and the `user_profiles` table using a foreign key
 
-- Create your backend repository  
-  - Create a new **public** GitHub repository specifically for your API code. 
-  You can name it something like "users-api".
-  - Create a new branch called `hw-7`. All your work for this assignment
-  should be pushed to this branch. The main/master branch should be **empty**.
-  - As you work, use clear, consistent commit messages to document your progress.
+### 2. New API Endpoint with Supabase ORM
 
-- Safely store sensitive information  
-  - Store database credentials (host, port, database name, user, password) 
-    in an `.env` file to keep them secure. 
-  - Double-check that `.env` is included in your `.gitignore` to prevent pushing it to GitHub.
-  - Use `process.env` to access your `.env` variables from your JavaScript code.
+- Create a new endpoint that retrieves data by joining the `users` table with the `user_profiles` table, using Supabase ORM:
+  - **GET `/users/profiles`**: Retrieve all users and their respective profiles
 
-- Build your API  
-  - Using Node and Express, create a new server with one endpoint to interact with the `users` table:
+- **Frontend Integration**  
+  - Update your frontend to fetch and display data from the new `/users/profiles` endpoint.
 
-    - **GET `/users`**: Retrieve all users from the database.
-      - Return the full list of users in JSON format.
-  
-  - Ensure this endpoint is connected to the `users` table and successfully retrieves data.
-  You can make requests to this endpoint using your browser, `curl`, or [Postman](https://www.postman.com/).
+### 3. Supabase Authentication
 
-### 3. API Usage
-  Integrate this API with your React frontend.
-
-  - In your frontend repository, make a new branch called `hw-7`. This branch should branch off
-  of the **most recent** version of your frontend code. All your work for this section
-  of the assignment should be done on this branch.
-
-  - Set up your environment:
-    - Use an `.env` file to store sensitive information (e.g., `REACT_APP_DB_PASSWORD`, `REACT_APP_API_KEY`).
-    - Double-check that `.env` is included in your `.gitignore` to prevent pushing it to GitHub.
-    - Use `process.env` to access your `.env` variables from your React code.
-  
-  - Fetch all the users using your new endpoint and display the fetched users. 
-    - If you did [assignment 5](/content/assignments/assignment-5), you will simply adjust
-    your existing fetch request to fetch from your newly created endpoint instead of the
-    one we provided. 
-    - If you did not do assignment 5, check out [workshop 5](/content/workshops/workshop-5)
-    to learn how to make API requests from the frontend.
-    - Hint: your URL domain should have `localhost` in it somewhere.
-
-Good luck, and remember to carefully structure your code and 
-keep your environment variables secure!
+- **Enable Authentication**  
+  Use Supabase's authentication features to restrict access to certain API endpoints.
+  - Example: Require users to log in before accessing the `/users/profiles` endpoint.
+  - Use Supabase's documentation and guides for adding authentication
 
 ## Additional Requirements
+### 1. Refactor Existing Endpoints
 
-- **Enhanced Database Schema**  
-  Add additional columns to the `users` table that might be relevant 
-  (e.g., `date_of_birth`, `profile_picture_url`, etc.) to further enrich the user data.
+- Refactor the endpoints you created in Assignment 7 to use Supabase ORM instead of raw SQL. 
 
-- **Additional API Endpoints**  
-  Enhance your API by adding more functionality:
+### 2. Extend Your Database Schema
 
-  - **POST `/users`**: Create a new user and add them to the database.
-  - **DELETE `/users/:id`**: Delete a user by ID.
-  - **PUT `/users/:id`**: Update a user’s information by ID.
+- Add more tables and relationships to enhance your API. For example:
+  - A `posts` table that stores user-generated posts.
 
-  - Connect your new endpoints to the frontend.
+### 3. Additional API Endpoints
+
+- Enhance your API with more functionality:
+  - **GET `/posts`**:Retrieve all posts with their authors.
+  - **POST `/posts`**: Create a new post.
+  - **DELETE `/posts/:id`**: Delete a post by ID.
+  
+### 4. Supabase Authentication in Depth
+
+- Use Supabase's built-in roles and permissions to:
+  - Allow only authenticated users to create or delete posts.
+  - Restrict some API endpoints to admin-only access.
 
 ## Resources
-- The workshop 7 slides and recordings, which you can find [here](/content/workshops/workshop-7).
-- [W3Schools SQL reference](https://www.w3schools.com/sql/default.asp)
-- [How to set up .env in React](https://stackoverflow.com/questions/49579028/adding-an-env-file-to-a-react-project)
+
+- [Supabase Documentation](https://supabase.com/docs)
+- [Supabase Authentication Overview](https://supabase.com/docs/guides/auth)
 
 ## Submission
 
@@ -93,26 +69,20 @@ The deadline for your submission is 1 week after the associated workshop.
 
 1. **Database**
 
-   - Take a screenshot of your database setup and connection in Render.
-   Name this screenshot `database_verification.png` and store it in the root folder
-   of your API repository.
-   - Run `SHOW TABLES;` (or the equivalent command) to display the schema of the `users` table. 
-   You will submit a screenshot of the output.
-   - Run `SELECT * FROM users;` to display the data in your table.
-   You will submit a screenshot of the output.
+   - Take screenshots of your Supabase database setup and config.
+     - Include the schema for your new `user_profiles` table.
+     - Include the schema for any tables you added.
 
 2. **API Repository**
 
-    - In your API repository, add a `README.md` file that explains your approach, 
-     key takeaways, and any challenges you encountered during the assignment.
-     This will help your reviewers understand your work in detail.
+    - In your API repository, add a README.md file that explains your approach, key takeaways, and any challenges you encountered during the assignment. This will help your reviewers understand your work in detail.
     - Make a pull request from your `hw-7` branch into main. You will submit the link to this PR.
 
-3. **Frontend repository**
+3. **Frontend Repository**
 
     - Make a pull request from your `hw-7` branch into main. You will submit the link to this PR.
 
-4. **Fill out [this Google form](https://docs.google.com/forms/d/e/1FAIpQLSfntsALyE7yn-3-b7k-Ltg7PW-JZpIadk27kPNuuRqt0ScLaA/viewform)**
+4. **Fill out [this Google form](https://docs.google.com/forms/d/e/1FAIpQLSeOeD8XOT3YJe_y_O6NlEPA78k8Y37gbQTCZDl8gRVfFsGCEQ/viewform)**
 
 ### For the Discover Program Application
 If you are not submitting for DISC exec feedback, but for your Discover Program Application,
