@@ -1,65 +1,69 @@
 ---
-title: Assignment 8 - Advanced API Development with Supabase
+title: Assignment 8 - Deployment and bonus features
 ---
 
-Building on the work you did in Assignment 7, this assignment focuses on improving your API by introducing a new table, creating joined endpoints using Supabase, and integrating Supabase's ORM and authentication into your project.
+_First, complete at least [assignment 3](/content/assignments/assignment-3) if you haven't already.
+That assignment is prerequisite._
+
+In this assignment, you will deploy your app so anyone can access it 
+over the internet. How exciting! You'll be able
+to send your friends your hosted URL and have them try out your app.
+
+You'll also add a cool new thing to your code :D
 
 ## Core Requirements
 
-### 1. Database Setup with Supabase
-
-- Set up a Supabase project and connect it to your PostgreSQL database.
-- Add a new table to your database. For example:
-  - Table Name: `user_profiles`
-  - Schema (add more fields if you want to):
-    - `id`: Foreign key (linked to the `id` column in the `users` table).
-    - `date_of_birth`: Date, stores the user's date of birth.
-    - `bio`: String, stores a short biography of the user.
-
-- Create a one-to-one relationship between the `users` table and the `user_profiles` table using a foreign key
-
-### 2. New API Endpoint with Supabase ORM
-
-- Create a new endpoint that retrieves data by joining the `users` table with the `user_profiles` table, using Supabase ORM:
-  - **GET `/users/profiles`**: Retrieve all users and their respective profiles
-
-- **Frontend Integration**  
-  - Update your frontend to fetch and display data from the new `/users/profiles` endpoint.
-
-### 3. Supabase Authentication
-
-- **Enable Authentication**  
-  Use Supabase's authentication features to restrict access to certain API endpoints.
-  - Example: Require users to log in before accessing the `/users/profiles` endpoint.
-  - Use Supabase's documentation and guides for adding authentication
+1. Deploy your backend API using [Vercel](https://vercel.com)
+    - Test this out by hooking it up to your frontend
+    (replace the fetches to your localhost API URL with the new deployed URL).
+2. Deploy your frontend using [Vercel](https://vercel.com)
+    - Go to the deployed link, everything should work perfectly as expected!
+3. Add one cool new thing to your app
+    - Before you start, make sure to create a new branch for this assignment
+      called `hw-8` that branches off the most recent version of your code. 
+      Do all your work on this branch.
+    - Your options are:
+      - Use [styled-components](https://styled-components.com/) to style your frontend.
+      - Use [tailwind](https://tailwindcss.com/) to style your frontend.
+      - Use [TypeScript](https://www.typescriptlang.org/) in your frontend.
+        - You can technically migrate your backend API to TypeScript too, 
+        but that's a bit more challenging.
+      - Use a 3rd party API in your backend API.
+        - In [workshop](/content/workshops/workshop-8), 
+          we used the [github API](https://docs.github.com/en/rest/quickstart?apiVersion=2022-11-28).
+          Feel free to use this one.
+        - You can choose any API you want as long as you are interfacing with it using
+          network requests.
+      - If your code *already* has any of these, that does not count. 
+        You must add something new!
 
 ## Additional Requirements
-### 1. Refactor Existing Endpoints
 
-- Refactor the endpoints you created in Assignment 7 to use Supabase ORM instead of raw SQL. 
-
-### 2. Extend Your Database Schema
-
-- Add more tables and relationships to enhance your API. For example:
-  - A `posts` table that stores user-generated posts.
-
-### 3. Additional API Endpoints
-
-- Enhance your API with more functionality:
-  - **GET `/posts`**:Retrieve all posts with their authors.
-  - **POST `/posts`**: Create a new post.
-  - **DELETE `/posts/:id`**: Delete a post by ID.
-  
-### 4. Supabase Authentication in Depth
-
-- Use Supabase's built-in roles and permissions to:
-  - Allow only authenticated users to create or delete posts.
-  - Restrict some API endpoints to admin-only access.
+- Add another cool thing to your app (another 3rd party API counts)
+- For styled-components:
+  - Implement conditional styling based on props
+  - Implement media queries and/or CSS state effects like `:hover`, `:focus`, etc
+  - Implement a CSS animation
+  - Migrate ALL styles of your entire app to use styled-components
+- For tailwind:
+  - Add a [tailwind theme](https://tailwindcss.com/docs/theme) to your project
+  - Migrate ALL styles of your entire app to use tailwind
+- For TypeScript:
+  - Implement and use an [enum](https://www.typescriptlang.org/docs/handbook/enums.html)
+  - Migrate ALL files of your frontend app to use TypeScript instead of JavaScript
+- For 3rd party APIs:
+  - Use more functions provided by the API
+  - Make multiple requests to the API from one of your endpoints
 
 ## Resources
 
-- [Supabase Documentation](https://supabase.com/docs)
-- [Supabase Authentication Overview](https://supabase.com/docs/guides/auth)
+- The workshop 8 slides and recording, which you can find [here](/content/workshops/workshop-8).
+- The workshop 1 slides and recording, which you can find [here](/content/workshops/workshop-1).
+  You might find the CSS section useful.
+- Tailwind [installation guide](https://tailkit.com/blog/how-to-add-tailwind-css-to-your-react-project)
+  and [documentation](https://v2.tailwindcss.com/docs).
+- [styled-components documentation](https://styled-components.com/)
+- [Add TypeScript to your frontend](https://www.totaltypescript.com/add-typescript-to-existing-react-project)
 
 ## Submission
 
@@ -67,22 +71,18 @@ Building on the work you did in Assignment 7, this assignment focuses on improvi
 Follow these instructions if you are submitting to get feedback from DISC exec.
 The deadline for your submission is 1 week after the associated workshop.
 
-1. **Database**
+1. **Deployment**: you'll submit URLs of your hosted API and frontend.
 
-   - Take screenshots of your Supabase database setup and config.
-     - Include the schema for your new `user_profiles` table.
-     - Include the schema for any tables you added.
+2. **Code**:
+    - Make sure all your changes are committed and pushed onto github 
+    (on the `hw-8` branch!)
+    - On github, make a pull request from your `hw-8` branch.
+      - **Do NOT merge the pull request**
+    - You'll submit the link to this pull request.
+      If you made changes to both the frontend and backend,
+      you'll submit two pull request links.
 
-2. **API Repository**
-
-    - In your API repository, add a README.md file that explains your approach, key takeaways, and any challenges you encountered during the assignment. This will help your reviewers understand your work in detail.
-    - Make a pull request from your `hw-8` branch into main. You will submit the link to this PR.
-
-3. **Frontend Repository**
-
-    - Make a pull request from your `hw-8` branch into main. You will submit the link to this PR.
-
-4. **Fill out [this Google form](https://docs.google.com/forms/d/e/1FAIpQLSeOeD8XOT3YJe_y_O6NlEPA78k8Y37gbQTCZDl8gRVfFsGCEQ/viewform)**
+3. Fill out [this google form](https://forms.gle/eoB45D8AucR9fWa47)
 
 ### For the Discover Program Application
 If you are not submitting for DISC exec feedback, but for your Discover Program Application,

@@ -1,49 +1,61 @@
 ---
-title: Workshop 3 - Visual Studio Code & Git Basics
-description: In this workshop, we will guide you through the installation and use of Visual Studio Code as a powerful text editor/IDE. We will also cover Git for version control, including creating repositories, branching, merging, and resolving conflicts.
+title: Workshop 3 - JavaScript, React, and JSX
+description: Learn how to build basic interactive web apps using JavaScript, React, and JSX.
 ---
 
 ## Workshop Topics
 
-- **Visual Studio Code: Installation and Overview**  
-  We began by discussing what a text editor and an IDE are, introducing Visual Studio Code as a versatile tool for coding. We also highlighted alternatives such as IntelliJ IDEA, Sublime Text, and Neovim.
+- **Setup**
 
-- **How to Install Visual Studio Code**  
-  Step-by-step installation instructions for setting up Visual Studio Code on your machine, including platform-specific tips.
+  - Make sure to install Node.js!
+  - Have your development environment setup (see previous workshop)
 
-- **Using the Interface**  
-  We explored the essential components of the VS Code interface:
+- **Introduction to JavaScript**  
+  A brief overview of JavaScript and why it is fundamental to modern web development.
 
-  - Opening folders and files
-  - Using the built-in terminal, including split terminals and different terminal types
-  - Understanding the sidebar tools (File Explorer, Search, Extensions)
-  - Common extensions such as GitLens, ESLint, and Tailwind CSS IntelliSense.
+- **Introducing React**  
+  We introduced React as a powerful framework for building user interfaces. Topics covered:
 
-- **Configuring VS Code for JS/TS Development**  
-  Demonstration of useful configurations like formatting on save, keyboard shortcuts (`Ctrl + C`, `Ctrl + V`, `Cmd + P`), and adding the `code` command to your terminal PATH for quick access.
+  - How React works and why it exists
+  - Migrating from simple HTML & CSS to React
 
-- **Introduction to Git**  
-  Overview of Git as a version control system. Topics covered:
+- **JSX Basics**  
+  We explored JSX as a syntax extension that allows writing HTML-like code in JavaScript. The initial exercise included:
 
-  - Initializing a new Git repository
-  - Adding and committing files (e.g., `index.html`, `styles.css`)
-  - Creating and viewing the history of commits (`git log`)
-  - Pushing code to GitHub and adding collaborators.
+  - Creating a simple to-do list in JSX
+  - No state or components; everything in one component
 
-- **Branching and Merging**  
-  We introduced branching, covering:
+- **Building Components**  
+  We broke the to-do list into multiple components, demonstrating how to manage component props. Topics covered:
 
-  - Creating new branches (`git checkout -b branchname`)
-  - Merging branches into the main branch, pushing changes, and resolving conflicts directly in VS Code.
+  - Turning part of the JSX into separate components
+  - Passing data using props
 
-- **Pull Requests and Reviews**  
-  A detailed walkthrough on creating a pull request, reviewing changes, and resolving merge conflicts.
+- **Adding State and Dark Mode**  
+  We introduced state management and enhanced the app with a simple dark mode toggle:
 
-- **Advanced Git Features**  
-  We covered rebasing (`git rebase`), squashing commits, and the differences between merge and rebase strategies. We also introduced forking and its utility in collaborative development.
+  - Changing the background color and text of the dark mode button
+  - Demonstrating debugging with the console
+
+- **Handling Arrays and Objects in React**  
+  We discussed how to work with arrays and objects in React. Key topics:
+
+  - Using `.map`, `.filter`, and `.forEach` to iterate over data
+  - Managing tricky aspects of array state
+
+  Example dummy data:
+
+  ```js
+  {
+    title: "Wash dishes",
+    description: "Clean the dishes",
+    deadline: "1500",
+    done: true
+  }
+  ```
 
 ## Materials
 
-| Workshop recording                                                                                                                                                                         | Slides                                                                                                       | Homework                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------- |
-| [Recording](https://northwestern.zoom.us/rec/play/yPGu8YvFUdOaWODnL1gfsBlN8UQLdFw5bkdjGLfdU6E--eGayXQb3WUuu__5j2ret7ZeqOY2PwOvMvA-.biYdBh73Dnm60Imw?autoplay=true&startTime=1729209014000) | [Link](https://docs.google.com/presentation/d/16RDVqW68pxsDapycTsHkI6mEi1cNwH02zabo_CdXImY/edit?usp=sharing) | [Assignment 3](/content/assignments/assignment-3) |
+| Workshop recording                                                                                                               | Slides                                                                                                       | Homework                                          |
+| -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------- |
+| [Link](https://northwestern.zoom.us/rec/share/K2H906VxhcOqYgdBDXl6jOD8DbODszcTkzt-jAJrr64x-5yKTgcwxSbkP7iaxkdJ.2Aucq_yiMLDlJ8HL) | [Link](https://docs.google.com/presentation/d/1xvEhefgVG_Jb1W2SA-FnBuR6hSd9XdOLYziqpisPpCE/edit?usp=sharing) | [Assignment 4](/content/assignments/assignment-4) |

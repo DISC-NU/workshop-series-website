@@ -1,39 +1,56 @@
 ---
-title: Workshop 7 - Node, Express, and PostgreSQL
-description: Dive into backend development by building a RESTful API with Node and Express, and learn to manage data with PostgreSQL.
+title: Workshop 7 - Building Complex Backends
+description: Explore the design and implementation of advanced backend systems, including multi-table databases, microservices, and authentication techniques.
 ---
 
 ## Workshop Topics
 
-- **Building a Node & Express Backend**  
-  In this session, we’ll begin with a foundational look at backend development, specifically creating RESTful APIs with Node and Express. We'll cover:
+- **Setup**  
+  Before starting, ensure your environment is ready for the workshop:
 
-  - A brief overview of REST principles and why APIs are crucial for connecting frontend applications to backend services.
-  - Introduction to Express, a Node.js framework, that simplifies API development.
-  - A hands-on demonstration of setting up a basic Express server and defining routes to handle incoming requests.
+  - Charge your laptop and ensure all necessary software is installed:
+    - Node.js
+    - Git
+    - VSCode
+  - Start Zoom with the camera off, unmute yourself, and share your screen. Test audio to ensure it plays through your speakers and confirm attendees can hear you.
+  - Share the Zoom link, slides, and attendance link via Discord and Zoom chat. Write the attendance link on the chalkboard.
+  - Open slides, test microphones, and confirm any website updates are deployed.
 
-- **Working with Databases**  
-  Next, we’ll dive into databases, focusing on the importance of managing data in backend applications.
+- **Building Complex Backends**  
+  This workshop introduces the principles of building robust, scalable backends used in industry. We’ll discuss architectural patterns, database management, and authentication.
 
-  - We’ll discuss why databases are vital for storing and retrieving data, and explore different types such as SQL and NoSQL, with a focus on PostgreSQL.
-  - **SQL Basics**: Learn the core concepts of SQL, and why relational databases are commonly used for data integrity.
-  - **FOLLOW-ALONG**: Setting up a PostgreSQL database on Render.com and connecting to it locally, using VSCode and a PostgreSQL extension to manage and query data.
+  - **Industry-Grade Backends**:
 
-- **Understanding APIs**  
-  We’ll explore the role of APIs in backend development, examining what they are, why they’re needed, and how they work.
+    - Overview of complex backend systems using a simple architectural diagram.
+    - Key components of industry-standard backend designs:
+      - APIs: Load balancing, rate limiting, and gateways.
+      - Data storage strategies: Caching with Redis, BLOB storage, and replication with multiple databases.
+      - Microservices: The importance of separating concerns for scalability.
+      - CDNs: Mentioned briefly for context (but not covered in detail).
 
-  - We’ll discuss RESTful APIs in depth, highlighting concepts like statelessness and idempotency, and introduce HTTP methods (GET, POST, PUT, DELETE) to handle data interactions.
-  - **HTTP Requests and Responses**: We'll break down the structure of HTTP requests, covering verbs, parameters, and body, and show how to process responses and handle errors effectively.
-  - **API Security**: We’ll introduce environment variables using `.env` files for secure API keys and database connections.
+  - **Complex Databases**:
 
-- **Creating Your First API**  
-  In this practical section, we’ll guide you through creating a simple API using Node and Express, setting up routes to interact with our PostgreSQL database.
+    - Working with multiple tables, SQL joins, and grouping.
+    - The importance of indexing for performance optimization.
+    - ORMs (Object-Relational Mappers):
+      - What they are and why they are useful.
+      - Overview of common ORMs, with a focus on Supabase.
+      - **Demo**: Using Supabase ORM to perform a SQL join.
 
-  - **FOLLOW-ALONG**: Build and test a Node/Express API, using tools like CURL or Postman to make requests and check responses. We'll also go over connecting your backend to a frontend application on localhost.
-  - **Deployment**: If time allows, we’ll deploy the API to Render, making it accessible from anywhere and practice making requests to this deployed backend.
+  - **Authentication**:
+    - Differentiating between authentication (verifying identity) and authorization (verifying permissions).
+    - API gateways and their role in secure authentication.
+    - Techniques for securing user data:
+      - Encryption, decryption, hashing, and salting.
+      - Sessions and JWT tokens (including refresh tokens).
+      - Role-based authentication.
+      - OAuth for third-party authentication.
+    - Why using existing authentication services simplifies implementation:
+      - Services like AWS Cognito, Firebase Auth, Supabase Auth, AuthJS, and Lucia Auth.
+      - **Demo**: Implementing Supabase Auth for authentication.
 
 ## Materials
 
-| Workshop recording                                                                                                                                                                                                                                                                                                                                                                                                       | Slides                                                                                                       | Homework                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------- |
-| [Link](https://northwestern.zoom.us/rec/play/770CUnjBqbHWNR9wkzGWPGDyPEucrRUWUqmIhY17XoZDa0Mc64MMYzA1erCVmo5t20AWA2FZVN6iIki1.5NAvSbGblb4vvGlC?canPlayFromShare=true&from=my_recording&startTime=1731632352000&componentName=rec-play&originRequestUrl=https%3A%2F%2Fnorthwestern.zoom.us%2Frec%2Fshare%2FAzMqv1zC2v3hPIqjWh9C2S7XtbuJcyduzVgpMEOeKQODf4PWO5TRuEBE9fa6ECaR.buKF883wDK3kab1J%3FstartTime%3D1731632352000) | [Link](https://docs.google.com/presentation/d/1DZ0JBfZLxulwFfaWs1CUt4uwiUplNKeUESgbUF3hp48/edit?usp=sharing) | [Assignment 7](/content/assignments/assignment-7) |
+| Workshop recording                                                                                                                                                                                                                                                                                                                                                                                                       | Slides                                                                               | Homework                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------- |
+| [Link](https://northwestern.zoom.us/rec/play/ln4PxO7PsxKjW_Sp0ivbblPF0KBXR7supsYNmexuwobhI5AEtm4UTJd-PPNt_5exEJ9F94aRJybEF__y.9XQzZxVV7vYzg5G8?canPlayFromShare=true&from=my_recording&startTime=1732236921000&componentName=rec-play&originRequestUrl=https%3A%2F%2Fnorthwestern.zoom.us%2Frec%2Fshare%2FVt-e2I45yszUYnZlfvSjkQC1chgbctHKBDQGAGDMaAzuQkQVbF0JpsmCbkCl0UgY.JHlUxL5CnpQwZPG-%3FstartTime%3D1732236921000) | [Link](https://docs.google.com/presentation/d/XYZ123ABCdefLinkHere/edit?usp=sharing) | [Assignment 7](/content/assignments/assignment-7) |

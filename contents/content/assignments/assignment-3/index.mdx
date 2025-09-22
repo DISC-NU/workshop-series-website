@@ -1,66 +1,98 @@
 ---
-title: Assignment 3 - Git Practice
+title: Assignment 3 - Build a Basic React App
 ---
 
-In workshop 3, we installed VSCode and git and learned about how we can use these tools to improve our developer experience. In assignment 3, we will practice working with git repositories.
+*First, read the [Project Overview](/content/assignments/project-overview) if you haven't already.*
 
-## Core requirements
+In workshop 3, we learned the fundamentals of building interactive websites using JavaScript and React, and we created an interactive todo list app using React. In assigment 3, you will build part of your own web app using React and JSX.
 
-This assignment has 3 parts. But don't stress, it will likely be the shortest assignment of the series!
+## Setup:
 
-For each part, we provide step-by-step instructions for how to complete it. We expect you to know how to do each step after watching [workshop 3](/content/workshops/workshop-3). If anything is confusing, reference the workshop 3 slides and recording, or just google it.
+0. Install [node.js](https://nodejs.org/en) if you don't have it already.
+    - To check if you have node installed, run `npm --version` in your terminal. You should see an output like `10.8.2` (it doesn't have to be this exact number, but something similar).
+1. In your terminal, navigate to some folder where you want the project to live inside. Run the following:
+    - `npx create-react-app my-app` // creates a new directory inside your current directory called my-app. Inside this folder is a brand new react project.
+    - `cd my-app` // move into the folder of your project
+    - `npm start`  // runs the starter code and opens the app in the browser
+2. Immediately, before making any changes to the existing code, push your repo to a public github repository.
+    - Use Ctrl + C to stop running your code and close out of the node.js terminal.
+    - On github, make a new ***public*** repository
+    - In your terminal, run the commands listed under the “push an existing repository from the command line” section. 
+    - When you refresh the repo page on github, you should now see your starter code there.
+3. Set up a new branch where you will store all your work for this assignment. 
+    - Run `git checkout -b hw-3` to create and switch to a new branch. 
+    - **All of the work you do for this assignment MUST be done on this branch. You should NOT modify the main branch.**
+    - Run  `git push -u origin hw-3` to publish this new branch on github.
+4. Open the “my-app” folder in VSCode. For this assignment, you are going to edit the following files:
+    - `src/App.js` // this is where all the JSX code for your app will be stored. 
+    - `src/App.css` // this is where all the CSS styling for your app will be stored.
+    - Don’t edit any other existing files unless you know what you are doing. If you want to add new files for whatever reason, that’s fine.
+5. Go back to your terminal, or open a new terminal window. This terminal window will be dedicated to running your code with npm. 
+    - To run your code, run `npm start` in this terminal. While the code is running, you will not be able to run terminal commands (including git commands) inside this terminal window. We will dedicate a different terminal window to running terminal commands in step 6.
+    - Running npm start should open your app in your browser. Whenever you save changes to App.js or App.css, the changes should be immediately reflected in your browser. Make a small change to App.js and save the file. Double check that your changes are reflected in the browser.
+    - If you want to stop running your code at any time, use Ctrl+C inside this terminal.
+6. Open another terminal window and navigate to your “my-app” project folder. Use this terminal window to make commits and push them to github. 
+    - Run `git branch` to see what branch you’re working on. **Ensure you are working on the hw-3 branch, NOT the main branch.** Use `git checkout insert-branch-name` to switch to a different branch.
+    - Run `git add . && git commit -m “my first commit”` to create a new commit with your small change to App.js. 
+    - Run `git push` to push your commit to github. Check your github page to make sure this commit was pushed onto the hw-3 branch, NOT the main branch.
+7. Now you are ready! Go forth and code!
+    - As you progress on this assignment, continue grouping your changes into commits and pushing them to the hw-3 branch on github. All of your commits MUST be on the hw-3 branch, not the main branch.
 
-#### Part 1: Make a public git repository with some html and css code inside.
-1. In an empty folder on your device, initialize a git repository.
-2. Put some HTML & CSS code inside this folder.
-    - Use your jsfiddle code from [assignment 2](/content/assignments/assignment-2).
-    - If you did not complete assignment 2, use [this jsfiddle](https://jsfiddle.net/w893zopx/4/).
-    - You should have at least 1 `.html` file and at least 1 `.css` file.
-3. Stage and commit your changes to the main/master branch.
-4. Create a new repository on [Github](https://github.com/). Name it whatever you want.
-5. Push your local git repository to that remote Github repository.
+## Core requirements:
+- Build 1 page of your web app in React by modifying `src/App.js` and `src/App.css`.
+  - We recommend building whatever page you built for [assignment 2](/content/assignments/assignment-2). Feel free to use your jsfiddle code as a reference for this assignment, but do not simply copy-paste your code and call it a day. It will be obvious if you do not make a genuine effort to complete this assignment.
+  - If you have not done any previous assignments, start with the [project overview](/content/assignments/project-overview). Brainstorm a web app idea and make a basic design of it using pen & paper (or any other method, so long as you have a design you can reference). Pick one of its pages to build for this assignment. 
+  - We recommend building whatever page includes a display of multiple profiles.
+- Your app must have the following components:
+  - An `App` component (this is provided already in the starter code in `src/App.js`).
+  - A `NavBar` component. For the navbar.
+  - At least 1 additional component.
+- Your code includes at least 1 call to `useState()`.
+  - This means you must implement an interactive feature that requires keeping track of state.
+  - Some examples include: clicking on a profile saves it to some list or makes it look different, dark mode toggle, login/logout button.
+- Your code includes at least 1 call to `useEffect()`.
+  - This can be trivial. For example, you can just use useEffect to console log the value of a state variable whenever it changes.
+- Both `src/App.js` and `src/App.css` must be modified.
 
-#### Part 2: Add a README file using a new branch.
-6. In your local git repository, make a new branch called `readme`. Switch to this new branch.
-7. Add a new file called `README.md`.
-8. In this file, provide a brief description of your repository. What does the code do and what purpose does it serve?
-9. Stage and commit your changes. 
-    - This commit should be attached to your new branch, and not the main branch.
-10. Push your branch onto Github.
-11. On Github, make a pull request for your branch. Then, merge it into main. 
-    - When viewing the main branch, you should now see your commits from your readme branch as well as a merge commit. Feel free to delete your readme branch after it is merged.
-
-*For parts 1 and 2, you will submit a link to your github repository.*
-
-#### Part 3: Fork the DISC workshop website repo and submit a PR.
-12. Fork the [DISC workshop website repository](https://github.com/DISC-NU/disc-fall-2024-workshop-series-website).
-13. Clone your fork onto your device.
-14. Open the file called `disc-members.md`. Add your name to the bottom of the list.
-15. Stage and commit your changes to the main branch.
-16. Push your changes onto Github.
-17. On Github, make a pull request from your fork. 
-
-*For part 3, you will submit a link to your fork.*
-
-## Additional requirements
-
-If you feel like it, here are some more things you can do to practice using git. There is nothing to submit for this, it's just for personal practice.
-- Make a private repository, and put one of your homework assignments in there. 
-  - **Do NOT, under any circumstances, EVER, put your homework in a *public* repository.**
-- Try merging some branches using the *squash and merge* feature, or the *rebase and merge* feature, and see what happens.
-- For a merge conflict to happen. Resolve it.
-- Make a branch A, add some commits, and then make a new branch B that branches off branch A. Add some additional commits to both branches A and B. Then make branch C branching off branch A, and branch D branching off branch B. Add some more commits to A, B, C, and D. Then try merging everything back together into main. 
+## Additional requirements:
+- State is the bread and butter of react. If you want to get good at React, we highly recommend focusing on getting better at useState.
+  - Make more interactive features using more states
+  - Use an array or object state
+- Make the app look *exactly* like your figma
+- Modify the `README.md` file to add a great description of your app
 
 ## Tips
-
-- If you're ever stuck, google is your best friend.
-- If that doesn't work, consult the workshop slides and recording.
-- Ask for help on discord.
+- Prioritize functionality over prettiness. If you’re pressed for time, spend it on getting your interactive features & states working instead of on making it look nice.
+- Use `console.log` all the time to debug
+  - You can print out objects like this: `console.log(“my object:”, myObject)` where `myObject` is a variable that stores my object.
+- Use useEffect to console log states when they get updated
 
 ## Resources
-
-- Workshop 3 slides and recording, which you can find [here](/content/workshops/workshop-3).
-- Honestly, that has everything you need.
+- The workshop slides and recording, which you can find [here](/content/workshops/workshop-3)
+- The [react app](https://github.com/DISC-NU/workshop-4-activites) we created during workshop 3
+- **Google**. React is so popular and commonly used, I guarantee you that someone else has run into the same problem you did.
+- StackOverflow
+- Quora
+- ChatGPT
+- [The React documentation](https://legacy.reactjs.org/docs/getting-started.html)
+  - [Tic-tac-toe tutorial](https://react.dev/learn/tutorial-tic-tac-toe)
+- [W3Schools React guides](https://www.w3schools.com/react/)
+- [Quick, React!](https://courses.cs.northwestern.edu/394/guides/quick-react.php) Guide to react created by a NU prof
+- There are SO many tutorials on youtube
+- If you want to go deeper:
+  - [Deep dive: react under the hood](https://youtu.be/za2FZ8QCE18?si=3ZSTduCM1BMZtEEC)
+  - [How rendering works in react](https://www.telerik.com/blogs/understand-how-rendering-works-react#:~:text=Rendering%20is%20React's%20process%20of,the%20UI%20need%20an%20update.)
+  - [How rendering works: virtual DOM and DOM update process](https://medium.com/@itsanuragjoshi/mastering-react-understanding-real-dom-vs-virtual-dom-and-the-dom-update-process-78a233454ff8#:~:text=Understanding%20the%20Real%20DOM%2C%20Virtual,changes%20to%20the%20actual%20DOM.)
+  - [Overview on batch state updates](https://www.linkedin.com/pulse/exploring-batching-react-18-optimizing-ui-updates-shudhanshu-raj#:~:text=Batching%2C%20introduced%20in%20React%2018,to%20perform%20the%20re%2Drender.)
+  - [Overview of JSX](https://react.dev/learn/writing-markup-with-jsx)
+  - [More on react props](https://builtin.com/articles/react-props)
+  - [react class components](https://www.w3schools.com/react/react_class.asp)
+  - useState hook
+    - [how react actually handles useState](https://youtu.be/RAJD4KpX8LA?si=TbvxigEUNodEMDTo)
+    - [Deep dive: react array states](https://www.dhiwise.com/post/react-append-to-state-array-understanding-immutability)
+    - [Guide on react object states, removing a key](https://react.dev/learn/updating-objects-in-state)
+    - [Array and object states cheat sheet](https://dev.to/andyrewlee/cheat-sheet-for-updating-objects-and-arrays-in-react-state-48np)
+  - [useEffect hook deep dive](https://daveceddia.com/useeffect-hook-examples/)
 
 ## Submission
 
@@ -68,10 +100,10 @@ If you feel like it, here are some more things you can do to practice using git.
 Follow these instructions if you are submitting to get feedback from DISC exec.
 The deadline for your submission is 1 week after the associated workshop.
 
-- For steps 1 & 2, you'll submit the link to your public github repository.
-- For step 3, you'll submit the link to your fork.
-
-- Fill out [this Google form](https://forms.gle/Zjb91xWKFkcVhazv6).
+1. Make sure all your changes are committed and pushed onto github (the hw-3 branch, NOT the main branch).
+2. On github, make a pull request from your hw-3 branch. **Do NOT merge the pull request into main**.
+3. Once you've created the pull request, copy its URL from the browser.
+4. Fill out [this google form](https://forms.gle/NBCkZQSBVscYbSFe7)
 
 ### For the Discover Program Application
 If you are not submitting for DISC exec feedback, but for your Discover Program Application,
