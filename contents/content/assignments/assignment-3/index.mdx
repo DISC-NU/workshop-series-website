@@ -11,9 +11,10 @@ In workshop 3, we learned the fundamentals of building interactive websites usin
 0. Install [node.js](https://nodejs.org/en) if you don't have it already.
     - To check if you have node installed, run `npm --version` in your terminal. You should see an output like `10.8.2` (it doesn't have to be this exact number, but something similar).
 1. In your terminal, navigate to some folder where you want the project to live inside. Run the following:
-    - `npx create-react-app my-app` // creates a new directory inside your current directory called my-app. Inside this folder is a brand new react project.
-    - `cd my-app` // move into the folder of your project
-    - `npm start`  // runs the starter code and opens the app in the browser
+    - `npm create vite@latest disc-app (or whatever name)` // creates a new directory inside your current directory called disc-app. Inside this folder is a brand new react project.
+      - select: React --> JavaScript + SWC --> No (to rolldown-vite) --> Yes (install dependencies)
+    - `cd disc-app` // move into the folder of your project
+    - `npm run dev`  // runs the starter code and opens the app in the browser
 2. Immediately, before making any changes to the existing code, push your repo to a public github repository.
     - Use Ctrl + C to stop running your code and close out of the node.js terminal.
     - On github, make a new ***public*** repository
@@ -22,29 +23,29 @@ In workshop 3, we learned the fundamentals of building interactive websites usin
 3. Set up a new branch where you will store all your work for this assignment. 
     - Run `git checkout -b hw-3` to create and switch to a new branch. 
     - **All of the work you do for this assignment MUST be done on this branch. You should NOT modify the main branch.**
-    - Run  `git push -u origin hw-3` to publish this new branch on github.
-4. Open the “my-app” folder in VSCode. For this assignment, you are going to edit the following files:
-    - `src/App.js` // this is where all the JSX code for your app will be stored. 
+    - Run  `git push -u origin hw-3` to publish this new branch on github. Also do this in future when you want to update GitHub with your changes (after committing).
+4. Open the “disc-app" folder in VSCode. For this assignment, you are going to edit the following files:
+    - `src/App.jsx` // this is where all the JSX code for your app will be stored. 
     - `src/App.css` // this is where all the CSS styling for your app will be stored.
     - Don’t edit any other existing files unless you know what you are doing. If you want to add new files for whatever reason, that’s fine.
 5. Go back to your terminal, or open a new terminal window. This terminal window will be dedicated to running your code with npm. 
-    - To run your code, run `npm start` in this terminal. While the code is running, you will not be able to run terminal commands (including git commands) inside this terminal window. We will dedicate a different terminal window to running terminal commands in step 6.
-    - Running npm start should open your app in your browser. Whenever you save changes to App.js or App.css, the changes should be immediately reflected in your browser. Make a small change to App.js and save the file. Double check that your changes are reflected in the browser.
+    - To run your code, run `npm run dev` in this terminal. While the code is running, you will not be able to run terminal commands (including git commands) inside this terminal window. We will dedicate a different terminal window to running terminal commands in step 6.
+    - Running npm run dev should open your app in your browser. Whenever you save changes to App.jsx or App.css, the changes should be immediately reflected in your browser. Make a small change to App.jsx and save the file. Double check that your changes are reflected in the browser.
     - If you want to stop running your code at any time, use Ctrl+C inside this terminal.
-6. Open another terminal window and navigate to your “my-app” project folder. Use this terminal window to make commits and push them to github. 
+6. Open another terminal window and navigate to your "disc-app” project folder. Use this terminal window to make commits and push them to github. 
     - Run `git branch` to see what branch you’re working on. **Ensure you are working on the hw-3 branch, NOT the main branch.** Use `git checkout insert-branch-name` to switch to a different branch.
-    - Run `git add . && git commit -m “my first commit”` to create a new commit with your small change to App.js. 
+    - Run `git add . && git commit -m “my first commit”` to create a new commit with your small change to App.jsx. 
     - Run `git push` to push your commit to github. Check your github page to make sure this commit was pushed onto the hw-3 branch, NOT the main branch.
 7. Now you are ready! Go forth and code!
     - As you progress on this assignment, continue grouping your changes into commits and pushing them to the hw-3 branch on github. All of your commits MUST be on the hw-3 branch, not the main branch.
 
 ## Core requirements:
-- Build 1 page of your web app in React by modifying `src/App.js` and `src/App.css`.
+- Build 1 page of your web app in React by modifying `src/App.jsx` and `src/App.css`.
   - We recommend building whatever page you built for [assignment 2](/content/assignments/assignment-2). Feel free to use your jsfiddle code as a reference for this assignment, but do not simply copy-paste your code and call it a day. It will be obvious if you do not make a genuine effort to complete this assignment.
   - If you have not done any previous assignments, start with the [project overview](/content/assignments/project-overview). Brainstorm a web app idea and make a basic design of it using pen & paper (or any other method, so long as you have a design you can reference). Pick one of its pages to build for this assignment. 
   - We recommend building whatever page includes a display of multiple profiles.
 - Your app must have the following components:
-  - An `App` component (this is provided already in the starter code in `src/App.js`).
+  - An `App` component (this is provided already in the starter code in `src/App.jsx`).
   - A `NavBar` component. For the navbar.
   - At least 1 additional component.
 - Your code includes at least 1 call to `useState()`.
@@ -52,7 +53,7 @@ In workshop 3, we learned the fundamentals of building interactive websites usin
   - Some examples include: clicking on a profile saves it to some list or makes it look different, dark mode toggle, login/logout button.
 - Your code includes at least 1 call to `useEffect()`.
   - This can be trivial. For example, you can just use useEffect to console log the value of a state variable whenever it changes.
-- Both `src/App.js` and `src/App.css` must be modified.
+- Both `src/App.jsx` and `src/App.css` must be modified.
 
 ## Additional requirements:
 - State is the bread and butter of react. If you want to get good at React, we highly recommend focusing on getting better at useState.
@@ -69,7 +70,7 @@ In workshop 3, we learned the fundamentals of building interactive websites usin
 
 ## Resources
 - The workshop slides and recording, which you can find [here](/content/workshops/workshop-3)
-- The [react app](https://github.com/DISC-NU/workshop-4-activites) we created during workshop 3
+- The [react app](https://github.com/DISC-NU/workshop-3-activites) we created during workshop 3
 - **Google**. React is so popular and commonly used, I guarantee you that someone else has run into the same problem you did.
 - StackOverflow
 - Quora
@@ -103,7 +104,7 @@ The deadline for your submission is 1 week after the associated workshop.
 1. Make sure all your changes are committed and pushed onto github (the hw-3 branch, NOT the main branch).
 2. On github, make a pull request from your hw-3 branch. **Do NOT merge the pull request into main**.
 3. Once you've created the pull request, copy its URL from the browser.
-4. Fill out [this google form](https://forms.gle/NBCkZQSBVscYbSFe7)
+4. Fill out [this google form](https://docs.google.com/forms/d/e/1FAIpQLSdn-xr_lItBw8XWeL7XpnvVAUgm0w2jw-C-7usJ4fqRCL1XYA/viewform?usp=header)
 
 ### For the Discover Program Application
 If you are not submitting for DISC exec feedback, but for your Discover Program Application,
