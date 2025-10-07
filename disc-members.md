@@ -14,3 +14,4 @@ Below is a list of students who have successfully completed this task:
 - Amy Liao
 - Ethan Pineda
 - Blake Hu
+- Jenny Zhou
