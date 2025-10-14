@@ -76,7 +76,7 @@ In assignment 4, you’ll add routing and API calls to your web app.
   you’ll need to communicate with this server.
   - The scheme that the server uses to communicate is ` https`.
     This means that you will communicate with this server by making HTTP requests.
-  - The domain/hostname of the server is: ` disc-assignment-5-users-api.onrender.com` (yes it says assignment 5 just ignore that 😇)
+  - The domain/hostname of the server is: `https://disc-assignment-5-users-api-iyct.onrender.com` (yes it says assignment 5 just ignore that 😇)
 - Below is the information you’ll need to build your requests
 
 | Function    | Method | Path           | Additional request information                                                                                                                                                                                                                        | Response                                                                                                                                                                                                                                                                                                                                                  |
@@ -89,13 +89,13 @@ In assignment 4, you’ll add routing and API calls to your web app.
 |             |        |                |                                                                                                                                                                                                                                                       |                                                                                                                                                                                                                                                                                                                                                           |
 
 - For example, say I wanted to delete the user named “Bob”.
-  - First, I make a `GET` request to “https://disc-assignment-5-users-api.onrender.com/api/users”
+  - First, I make a `GET` request to “https://disc-assignment-5-users-api-iyct.onrender.com/api/users”
     to get information about all the users. Take note of how I constructed this URL
     using the scheme + domain + path.
   - Then, I search through the array of users to find the id corresponding to the user named “Bob”.
     Let’s say Bob has id 28.
   - Finally, I make a `DELETE` request to
-    “https://disc-assignment-5-users-api.onrender.com/api/users/28” to delete the user with id 28.
+    “https://disc-assignment-5-users-api-iyct.onrender.com/api/users/28” to delete the user with id 28.
 - Use the [fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
   to make requests to the server in your JavaScript code.
   - For `createUser`, and `updateUser`, the Content-Type you need to use for your
@@ -108,7 +108,7 @@ In assignment 4, you’ll add routing and API calls to your web app.
   complete the request because it has to un-sleep. This means that some requests might
   take up to 5 minutes to complete.
   - To wake the server, you can make a `GET` request to it by
-    opening this URL in your browser: https://disc-assignment-5-users-api.onrender.com/api/users.
+    opening this URL in your browser: https://disc-assignment-5-users-api-iyct.onrender.com/api/users.
     That’s right, every time you go to a link in your browser, it’s really just making
     a `HTTP GET` request to that url and displaying the result.
 - *Having trouble? Check out Ethan's 
