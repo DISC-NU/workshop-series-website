@@ -1,39 +1,39 @@
 ---
-title: Workshop 5 - Best React
-description: Learn how to write fast, performant React and best practices for code maintainability.
+title: Workshop 5 - Node, Express, and PostgreSQL
+description: Dive into backend development by building a RESTful API with Node and Express, and learn to manage data with PostgreSQL.
 ---
 
 ## Workshop Topics
 
-- **Setup and Prerequisites**
+- **Building a Node & Express Backend**  
+  In this session, we’ll begin with a foundational look at backend development, specifically creating RESTful APIs with Node and Express. We'll cover:
 
-  - Completed Workshop 4
-  - Node.js should be installed
-  - Familiarity with git
+  - A brief overview of REST principles and why APIs are crucial for connecting frontend applications to backend services.
+  - Introduction to Express, a Node.js framework, that simplifies API development.
+  - A hands-on demonstration of setting up a basic Express server and defining routes to handle incoming requests.
 
-- **Performance Optimization Techniques** 
-  - `useRef` 
-  - `useCallback` 
-  - `useMemo`
-  - Working with lists
-    - Using `.map()` with keys
-    - Appending to the end 
+- **Working with Databases**  
+  Next, we’ll dive into databases, focusing on the importance of managing data in backend applications.
 
+  - We’ll discuss why databases are vital for storing and retrieving data, and explore different types such as SQL and NoSQL, with a focus on PostgreSQL.
+  - **SQL Basics**: Learn the core concepts of SQL, and why relational databases are commonly used for data integrity.
+  - **FOLLOW-ALONG**: Setting up a PostgreSQL database on Render.com and connecting to it locally, using VSCode and a PostgreSQL extension to manage and query data.
 
-- **Readability & Maintainability** 
-  - File & Component Organization
-    - Explore Etsy to examine the file structure and find similar components
-    - Activity: using generic components
-  - `useContext`
-    - Demo: using `useContext` in a sign-up form
-    - Activity: Toggle between light and dark mode
-  - Custom hooks
-    - Restrictions and their conventions
-    - Demo: create `useProducts` custom hook
-    - Activity: implement `useFilteredProducts`
+- **Understanding APIs**  
+  We’ll explore the role of APIs in backend development, examining what they are, why they’re needed, and how they work.
+
+  - We’ll discuss RESTful APIs in depth, highlighting concepts like statelessness and idempotency, and introduce HTTP methods (GET, POST, PUT, DELETE) to handle data interactions.
+  - **HTTP Requests and Responses**: We'll break down the structure of HTTP requests, covering verbs, parameters, and body, and show how to process responses and handle errors effectively.
+  - **API Security**: We’ll introduce environment variables using `.env` files for secure API keys and database connections.
+
+- **Creating Your First API**  
+  In this practical section, we’ll guide you through creating a simple API using Node and Express, setting up routes to interact with our PostgreSQL database.
+
+  - **FOLLOW-ALONG**: Build and test a Node/Express API, using tools like CURL or Postman to make requests and check responses. We'll also go over connecting your backend to a frontend application on localhost.
+  - **Deployment**: If time allows, we’ll deploy the API to Render, making it accessible from anywhere and practice making requests to this deployed backend.
 
 ## Materials
 
-| Workshop recording | Slides | Homework |
-| - | - | - |
-| [Link](https://northwestern.zoom.us/rec/share/r-YJ7MK4OCBTUat6WAoC_p9iKKg3lZgWIRn86lC1NdfAs7L5B7sElhc5PSNJH9u9.39JCrWbtcZRaoKOD?startTime=1731027531000) <br/> This recording has video & audio issues during some parts. Sorry about that; we'll do better in the future. | [Link](https://docs.google.com/presentation/d/1A04efv9PVWjfn5PNq49irgpc9AwrbxOiaIJAiUUi8c0/edit?usp=sharing) | [Assignment 6](/content/assignments/assignment-6) |
+| Workshop recording                                                                                                                                                                                                                                                                                                                                                                                                       | Slides                                                                                                       | Homework                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------- |
+| [Link](https://northwestern.zoom.us/rec/play/gaIWVOz6RYNwNyjPGbE2C50CUZYoa55412QS1aPjj23CN4U1LGAbGUoipmnm4yiXP1fRvKYil8yGAng.oV__0cjnKxESTQ9e?eagerLoadZvaPages=sidemenu.billing.plan_management&accessLevel=meeting&canPlayFromShare=true&from=my_recording&continueMode=true&componentName=rec-play&originRequestUrl=https://northwestern.zoom.us/rec/share/zD6rCwiotwNTuPT1fRnVXN6AFqrpj3vFyW7B76BZmqfQsH6Bl6sI7GuYxosE9P5i.ACowfl_NTvQusMPI) | [Link](https://docs.google.com/presentation/d/1cG-qzS7PA08sBGvDIbIyeZQpUbQGFbbI2fF9DcGrzTE/edit?usp=sharing) | [Assignment 5](/content/assignments/assignment-5) |
