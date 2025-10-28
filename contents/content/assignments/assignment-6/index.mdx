@@ -1,5 +1,89 @@
 ---
-title: Assignment 6 - TBA...
+title: Assignment 6 - Advanced API Development with Supabase
 ---
 
-low key why are you looking ahead 🤨
+Building on the work you did in Assignment 5, this assignment focuses on improving your API by introducing a new table, creating joined endpoints using Supabase, and integrating Supabase's ORM and authentication into your project.
+
+## Core Requirements
+
+### 1. Database Setup with Supabase
+
+- Set up a Supabase project and connect it to your PostgreSQL database.
+- Add a new table to your database. For example:
+  - Table Name: `user_profiles`
+  - Schema (add more fields if you want to):
+    - `id`: Foreign key (linked to the `id` column in the `users` table).
+    - `date_of_birth`: Date, stores the user's date of birth.
+    - `bio`: String, stores a short biography of the user.
+
+- Create a one-to-one relationship between the `users` table and the `user_profiles` table using a foreign key
+
+### 2. New API Endpoint with Supabase ORM
+
+- Create a new endpoint that retrieves data by joining the `users` table with the `user_profiles` table, using Supabase ORM:
+  - **GET `/users/profiles`**: Retrieve all users and their respective profiles
+
+- **Frontend Integration**  
+  - Update your frontend to fetch and display data from the new `/users/profiles` endpoint.
+
+### 3. Supabase Authentication
+
+- **Enable Authentication**  
+  Use Supabase's authentication features to restrict access to certain API endpoints.
+  - Example: Require users to log in before accessing the `/users/profiles` endpoint.
+  - Use Supabase's documentation and guides for adding authentication
+
+## Additional Requirements
+### 1. Refactor Existing Endpoints
+
+- Refactor the endpoints you created in Assignment 7 to use Supabase ORM instead of raw SQL. 
+
+### 2. Extend Your Database Schema
+
+- Add more tables and relationships to enhance your API. For example:
+  - A `posts` table that stores user-generated posts.
+
+### 3. Additional API Endpoints
+
+- Enhance your API with more functionality:
+  - **GET `/posts`**:Retrieve all posts with their authors.
+  - **POST `/posts`**: Create a new post.
+  - **DELETE `/posts/:id`**: Delete a post by ID.
+  
+### 4. Supabase Authentication in Depth
+
+- Use Supabase's built-in roles and permissions to:
+  - Allow only authenticated users to create or delete posts.
+  - Restrict some API endpoints to admin-only access.
+
+## Resources
+
+- [Supabase Documentation](https://supabase.com/docs)
+- [Supabase Authentication Overview](https://supabase.com/docs/guides/auth)
+
+## Submission
+
+### For feedback from DISC exec
+Follow these instructions if you are submitting to get feedback from DISC exec.
+The deadline for your submission is 1 week after the associated workshop.
+
+1. **Database**
+
+   - Take screenshots of your Supabase database setup and config.
+     - Include the schema for your new `user_profiles` table.
+     - Include the schema for any tables you added.
+
+2. **API Repository**
+
+    - In your API repository, add a README.md file that explains your approach, key takeaways, and any challenges you encountered during the assignment. This will help your reviewers understand your work in detail.
+    - Make a pull request from your `hw-7` branch into main. You will submit the link to this PR.
+
+3. **Frontend Repository**
+
+    - Make a pull request from your `hw-7` branch into main. You will submit the link to this PR.
+
+4. **Fill out [this Google form](https://docs.google.com/forms/d/e/1FAIpQLSeOeD8XOT3YJe_y_O6NlEPA78k8Y37gbQTCZDl8gRVfFsGCEQ/viewform)**
+
+### For the Discover Program Application
+If you are not submitting for DISC exec feedback, but for your Discover Program Application,
+follow the submission instructions in the application form.
