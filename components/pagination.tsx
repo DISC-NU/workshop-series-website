@@ -12,7 +12,7 @@ export default function Pagination({ pathname }: { pathname: string }) {
         {res.prev && (
           <Link
             className="flex items-center gap-2 no-underline text-sm px-1"
-            href={`/${BasePath.CONTENT}${res.prev.href}`}
+            href={`/${res.prev.basePath}${res.prev.href}`}
           >
             <ChevronLeftIcon className="w-[1.1rem] h-[1.1rem]" />
             <p>{res.prev.title}</p>
@@ -23,7 +23,7 @@ export default function Pagination({ pathname }: { pathname: string }) {
         {res.next && (
           <Link
             className="flex items-center gap-2 no-underline text-sm px-1"
-            href={`/${BasePath.CONTENT}${res.next.href}`}
+            href={`/${res.next.basePath}${res.next.href}`}
           >
             <p>{res.next.title}</p>
             <ChevronRightIcon className="w-[1.1rem] h-[1.1rem]" />

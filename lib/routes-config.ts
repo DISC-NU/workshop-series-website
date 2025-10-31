@@ -14,7 +14,7 @@ export const ROUTES: EachRoute[] = [
   },
   {
     title: "Schedule",
-    href: "/schedule",
+    href: "/",
     basePath: "schedule",
   },
   {
@@ -66,17 +66,19 @@ type Page = { title: string; href: string; basePath?: string };
 
 function getRecursiveAllLinks(
   node: EachRoute,
-  parentHref: string = ""
+  parentHref: string = "",
+  parentBasePath?: string
 ): Page[] {
   const ans: Page[] = [];
   const fullHref = `${parentHref}${node.href}`;
+  const basePath = node.basePath ?? parentBasePath;
 
   if (!node.noLink) {
-    ans.push({ title: node.title, href: fullHref, basePath: node.basePath });
+    ans.push({ title: node.title, href: fullHref, basePath: basePath });
   }
 
   node.items?.forEach((subNode) => {
-    ans.push(...getRecursiveAllLinks(subNode, fullHref));
+    ans.push(...getRecursiveAllLinks(subNode, fullHref, node.basePath));
   });
 
   return ans;
