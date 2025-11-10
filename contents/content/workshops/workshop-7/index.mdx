@@ -1,9 +1,58 @@
 ---
-title: Workshop 7 - Authorization & State Management
-description: TODO
+title: Workshop 7 - User Authentication & More Backend
+description: This workshop focuses on implementing user authentication with Supabase, managing frontend state with React's useContext, organizing a backend project structure, and deploying a frontend application.
 ---
 
 ## Workshop Topics
 
-- **Setup**  
-  TODO
+- **User Authentication & More Backend**  
+  This workshop focuses on how exactly (user) authentication works within Supabase, 
+  the pros and cons of HttpOnly & LocalStorage tokens, conditional rendering, and how your 
+  backend file structure should look (and work). 
+
+* **Authentication Fundamentals**
+    * Differentiating **Authentication** (verifying *who* you are, like logging in) from **Authorization** (determining *what* you can do, like admin vs. user access).
+    * Techniques for managing user state:
+        * **Sessions & Cookies**: Using server-side storage (sessions) and client-side session IDs (cookies).
+        * **JWT (JSON Web Tokens)**: Stateless tokens that securely transfer user information and expiration times.
+        * **Refresh Tokens**: Longer-lived tokens used to generate new JWTs when the main (access) token expires, avoiding frequent logins.
+    * Common patterns include Role-Based Access Control (RBAC) for permissions and **OAuth** for third-party sign-ins (e.g., "Sign in with Google").
+
+* **Supabase Authentication Flow**
+    * Overview of the login process:
+        * How the frontend sends login info to backend API, backend controller uses Supabase to communicate with database, and finally "authorize" the user.
+    * Token Storage Strategies:
+        * **HttpOnly Cookies**: The backend sets the tokens in `httpOnly` cookies. This is the more secure method as it prevents Cross-site Scripting (XSS) attacks because client-side JavaScript cannot access the cookie.
+        * **LocalStorage**: The backend sends the raw token to the frontend, which stores it in `localStorage` and manually adds it to the `Authorization` header of every request. This is less secure but easier to debug and flexible for other platforms.
+    * **Refresh Logic**: Supabase *provides* the refresh token, but the developer is responsible for implementing the logic to use it to get a new access token when the old one expires.
+
+* **Frontend Authentication Logic**
+    * Managing global authentication state using React's **`useContext` Hook**.
+        * Avoids "prop drilling"
+        * **Implementation**: Create a `UserContext`, wrap the application in a `UserContext.Provider` component, and update the context's state upon successful login.
+    * Updating the UI based on auth status:
+        * **Conditional Rendering**: Showing or hiding specific components (e.g., `{user ? <LogoutButton /> : <LoginButton />}`). This is ideal for UI elements like navbars.
+        * **Redirecting**: Programmatically navigating the user to a different page (e.g., `if (!user) return <Navigate to="/login" />`). This is preferred for protecting entire pages like a dashboard or settings page.
+
+* **Backend Project Structure**
+    * Overview of a common, organized file structure to improve maintainability.
+    * Key directories and their roles:
+        * `index.js` (or `server.js`): The main server entry point. It initializes Express, sets up CORS, and imports routers.
+        * `/config`: Used for service setup, like initializing the Supabase clients (standard and admin).
+        * `/routers`: Defines the API paths (e.g., `/api/auth`) and connects them to the appropriate middleware and controller functions.
+        * `/controllers`: The "brains" of the API. These functions contain the main logic, such as querying the database, and are called by the routers.
+        * `/middleware`: "Guards" that run *before* a controller function. Used for tasks like authentication (`checkAuth`) or authorization (`isAdmin`). They use the `next()` function to pass control to the next function in the chain.
+
+* **Deployment**
+    * **What it is**: The process of transferring a codebase from a local development environment (like `http://localhost:PORT`) to a live production environment so it can be accessed by end-users on the internet.
+    * **Deployment Options**:
+        * **Cloud Platforms**: Services like AWS, GCP, and Azure. They are highly scalable but can be complex to manage.
+        * **Self-Hosting**: Using your own servers, which gives you full control but also full responsibility for security, networking, and infrastructure.
+        * **Web Hosting Service**: Platforms like Vercel and Netlify, which are easy to set up because the service handles the infrastructure.
+    * **Firebase**: A platform from Google designed to accelerate app development by providing tools and easy deployment.
+
+## Materials
+
+| Workshop recording                                                                                                                                                                                                                                                                                                                                                                                                       | Slides                                                                               | Homework                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------- |
+| [Link](https://northwestern.zoom.us/rec/share/CiGZkevixNfSMzLEmBxISkXlBIQHW1vJTvOA-fMtnW22giIVaY4iTentAgwnK_Ok.qEV7nXlrMp390FVv?startTime=1762216208000) | [Link](https://docs.google.com/presentation/d/1eazM5uneG5hZQj-QrgnwjiBHhe0DRzcVx11GYETtEGg/edit?usp=sharing) | [Assignment 7](/content/assignments/assignment-7) |

@@ -36,9 +36,7 @@ export const ROUTES: EachRoute[] = [
       { title: "4: Better React", href: "/workshop-4" },
       { title: "5: Backend Basics", href: "/workshop-5" },
       { title: "6: Complex Backends", href: "/workshop-6" },
-      { title: "7: Authorization & State Management", href: "/workshop-7" },
-      { title: "8: TBD", href: "/workshop-8" },      
-      { title: "9: TBD", href: "/workshop-9" },
+      { title: "7: User Authorization & More Backend", href: "/workshop-7" },
 
     ],
   },
@@ -55,9 +53,7 @@ export const ROUTES: EachRoute[] = [
       { title: "4: Routing & Fetching", href: "/assignment-4" },
       { title: "5: Basic API", href: "/assignment-5" },
       { title: "6: Supabase", href: "/assignment-6" },
-      { title: "7: Assignment 7 (TBD)", href: "/assignment-7" },
-      { title: "8: Assignment 8 (TBD)", href: "/assignment-8" },
-      { title: "9: Assignment 9 (TBD)", href: "/assignment-9" },
+      { title: "7: Authorization & Deployment", href: "/assignment-7" },
     ],
   },
 ];

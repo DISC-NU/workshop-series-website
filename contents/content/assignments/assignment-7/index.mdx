@@ -1,6 +1,89 @@
 ---
-title: Assignment 7 - TBD...
+title: Assignment 7 - Authorization & Deployment
 ---
 
-low key why are you looking ahead 🤨
+Building on the work you did in Assignment 6, this assignment deals with improving your backend file structure, taking advantage of React's `useContext`, and deploying your frontend & backend repos.
 
+## Core Requirements
+
+### 1. Database Setup with Supabase
+
+- Organize your backend file structure to match the below layout:
+```
+  /my-project
+  ├── /src
+  │   ├── /config          # service setup (DBs, 3rd-party APIs)
+  │   ├── /controllers     # the "brains" - does most logic for queries
+  │   ├── /middleware      # "guards" - auth, logging, validation
+  │   ├── /routers         # defines the API paths and where functions run
+  │   │
+  │   └── index.js         # The main entry point (also called server.js)
+  │
+  ├── .env                 # Secret keys and config variables
+  ├── package.json
+```
+
+- This helps with keeping your folders/files structured in a clean, logical fashion. There are many ways to go about doing this,  
+but the template above is one of the most common patterns. 
+
+### 2. Frontend State with `useContext`
+
+  * Refactor your frontend React application to manage global authentication state (e.g., the user object, login status) using the `useContext` Hook to avoid prop drilling.
+  * **Implementation Steps:**
+    1.  **Create a Context:** Create a new context for authentication (e.g., `AuthContext = React.createContext()`).
+    2.  **Create a Provider:** Build a provider component (e.g., `AuthProvider`) that will wrap your application (e.g., in `App.jsx`).
+    3.  **Manage State:** Inside this `AuthProvider`, use `useState` to store the user's authentication status (e.g., `const [user, setUser] = useState(null)` or `const [isLoggedIn, setIsLoggedIn] = useState(false)`).
+    4.  **Pass Value:** Pass the state and any functions to update it (like `login`, `logout`) through the provider's `value` prop.
+          * Example: `<AuthContext.Provider value={{ user, isLoggedIn, login, logout }}>{children}</AuthContext.Provider>`
+    5.  **Consume Context:** In any child component that needs the auth state (like your `Navbar` or protected pages), consume the context using the hook:
+          * Example: `const { user, isLoggedIn } = useContext(AuthContext)`
+
+  * **Application:**
+      * Use this global state to conditionally render your `Navbar`. It should show "Login" and "Sign Up" links if `isLoggedIn` is `false`, and a "Logout" button or user profile link if `isLoggedIn` is `true`.
+      * Use this context to protect routes, redirecting users to the login page if they try to access a protected page while not authenticated.
+
+### 3. Full-Stack Deployment
+  * **Frontend (Firebase):**
+      * Deploy your frontend React application using **[Firebase Hosting](https://firebase.google.com/docs/hosting/quickstart)**.
+      * Ensure your deployed frontend is configured to make API calls to your *deployed backend URL* (you will likely need to update your API base URL in your `.env` file).
+      * For help, see 56:25 from the [workshop Zoom recoring](https://northwestern.zoom.us/rec/play/ZLsZ8biWnmiODqf3TxqUv7XQN9Tf7QWgqpW0USaPRJybYnpDxrvAvXVoJcV5nH90tv47cFe1VIih3Jo8.P-EmaRr12BNhAXGX?eagerLoadZvaPages=sidemenu.billing.plan_management&isReferralProgramEnabled=false&isReferralProgramAvailable=false&accessLevel=meeting&canPlayFromShare=true&from=my_recording&startTime=1762216208000&componentName=rec-play&originRequestUrl=https://northwestern.zoom.us/rec/share/CiGZkevixNfSMzLEmBxISkXlBIQHW1vJTvOA-fMtnW22giIVaY4iTentAgwnK_Ok.qEV7nXlrMp390FVv?startTime%3D1762216208000).
+
+  * **Backend (Render):**
+      * Deploy your backend Node.js/Express API using **[Render](https://render.com/)**.
+      * Ensure your CORS settings on the backend are correctly configured to allow requests from your live Firebase frontend URL (if you have CORS configured, which you should!).
+      * For help, [this documentation guide](https://www.geeksforgeeks.org/node-js/how-to-deploy-node-js-express-application-on-render/#) is very easy to follow and replicate
+      * Things to keep in mind:
+        * You must not hard-code your PORT variable. You must be using `process.env.PORT` (render will tell you what this value should be upon creation).
+        * Any environmental variables you have in your `.env` file must be copied and pasted over to your Render project. Otherwise, your API won't work.
+        * If your build fails, look at the build log in Render to identify and debug what happened. It's very good practice to take the time to understand
+          *why* the build is failing rather than insta-plugging into ChatGPT. Understanding why builds fail and being able to debug accordingly is a very
+          convenient skill to have!
+
+## Resources
+  * [React `useContext` Hook Documentation](https://react.dev/reference/react/useContext)
+  * [Firebase Hosting Documentation](https://firebase.google.com/docs/hosting/quickstart)
+  * [Deploying a Node.js Express App on Render](https://www.google.com/search?q=https://render.com/docs/deploy-express-js)
+
+## Submission
+
+### For feedback from DISC exec
+
+Follow these instructions if you are submitting to get feedback from DISC exec.
+The deadline for your submission is 1 week after the associated workshop.
+
+1.  **API Repository**
+      * In your API repository, update your `README.md` file to explain your new project structure and any challenges you faced.
+      * Include the live URL for your deployed **Render** backend.
+      * Make a pull request from your `hw-7` branch into `main`. You will submit the link to this PR.
+
+2.  **Frontend Repository**
+      * In your frontend repository, update your `README.md` to explain how you implemented `useContext` to manage state.
+      * Include the live URL for your deployed **Firebase** frontend.
+      * Make a pull request from your `hw-7` branch into `main`. You will submit the link to this PR.
+
+3.  **Fill out [this Google form](https://forms.gle/FEZQfC8DLSZsWdkg6)**
+
+### For the Discover Program Application
+
+If you are not submitting for DISC exec feedback, but for your Discover Program Application,
+follow the submission instructions in the application form.
